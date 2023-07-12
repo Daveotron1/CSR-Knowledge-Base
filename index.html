@@ -45,14 +45,14 @@
 
         #search-wrapper {
             display: flex;
-            align-items: center;
+            align-items: center; 
         }
 
         #start-button {
             margin-top: -60px;
             padding: 10px 20px;
             border-radius: 4px;
-            background-color: #2fa002;
+            background-color: #acacac67;
             transition: background-color 0.3s ease;
         }
 
@@ -124,7 +124,14 @@
             var pdfUrl = getPDFUrl(tool, reason);
             if (pdfUrl) {
                 window.open(pdfUrl, "_blank"); // Open the PDF URL in a new window or tab
+                resetSelection(); // Reset the select elements 
             }
+        }
+
+        function resetSelection() {
+            document.getElementById("tool").selectedIndex = 0; // Reset tool select element
+            document.getElementById("reason").selectedIndex = 0; // Reset reason select element
+            checkSelection(); // Update the search button state
         }
 
         function getPDFUrl(tool, reason) {
