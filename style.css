@@ -1,0 +1,54 @@
+body {
+    font-family: 'poppins', Arial, Helvetica, sans-serif;
+    background: #eee;
+}
+
+.form-column label {
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-column select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-column:last-child {
+    margin-left: 10px;
+}
+
+.button-container {
+    margin-left: 635px;
+}
+
+#pdf-container {
+    display: none;
+    margin-top: 20px;
+}
+
+#pdf-container embed {
+    width: 100%;
+    height: 800px;
+}
+
+#search-wrapper {
+    display: flex;
+    align-items: center; 
+}
+
+#start-button {
+    margin-top: -60px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: #acacac67;
+    transition: background-color 0.3s ease;
+}
+
+#start-button.ready {
+    background-color: rgb(2, 189, 2);
+}
