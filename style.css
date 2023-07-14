@@ -1,15 +1,21 @@
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'poppins', Arial, Helvetica, sans-serif;
-    background: #eee;
+    background: #cc1515;
 }
 
 .form-column label {
     font-weight: bold;
+    font-size: 24px;
 }
 
 .form-container {
     display: flex;
     flex-direction: row;
+    margin-left: 80px;
+    margin-top: 70px;
 }
 
 .form-column select {
@@ -23,7 +29,7 @@ body {
 }
 
 .button-container {
-    margin-left: 635px;
+    margin-left: 53rem;
 }
 
 #pdf-container {
@@ -44,8 +50,8 @@ body {
 #start-button {
     margin-top: -60px;
     padding: 10px 20px;
-    border-radius: 4px;
-    background-color: #acacac67;
+    border-radius: 10px;
+    background-color: #acacac;
     transition: background-color 0.3s ease;
 }
 
