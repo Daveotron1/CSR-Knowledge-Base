@@ -3,30 +3,33 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'poppins', Arial, Helvetica, sans-serif;
+    
 }
 
 .container{
-    width: 100%;
-    height: 100vh;
-    background: #eee;
+    width: 50%;
+    height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     position: relative;
+    z-index:9999;
+    margin-left:20px;
+    
 }
 
 form{
-    background: white;
+    background: #1e0404;
     display: flex;
     flex-direction: column;
-    padding: 2vw 4vw;
-    width: 90%;
+    padding: 2vw 3vw;
+    width: 70%;
     max-width: 600px;
     border-radius: 10px
 }
 
 form h3{
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: 800;
     margin-bottom: 20px;
 }
@@ -42,21 +45,21 @@ form input, form textarea{
 
 form button{
     padding: 15px;
-    background: #ff5361;
+    background: #acacac;
     color: black;
     font-size: 18px;
     border:0;
     outline: none;
     cursor: pointer;
     width: 150px;
-    margin:20px auto 0;
+    margin:10px auto 0;
     border-radius: 10px;
 }
 
 .knowledge-base-link{
     position: relative;
     top: 250px;
-    right: 600px;
+    right: 200px;
     padding: 10px;
     background-color: #ff5361;
     color:white;

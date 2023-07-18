@@ -1,19 +1,29 @@
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', Arial, Helvetica, sans-serif;
-    background: #cc1515;
+html {
+    height:100%;
+    background-position: center;
+    background-color: #c20000;
+    margin-top:0;
 }
 
+body {
+    margin: 0;
+    padding: 60px;
+    box-sizing: border-box;
+    font-family: 'poppins', Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom,#c20000 20%, #270000 80%);
+    color:white;
+}
+
+
+
 .form-column label {
-    font-weight: bold;
+    font-weight:bold;
     font-size: 24px;
 }
 
 .form-container {
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     margin-left: 80px;
     margin-top: 70px;
 }
