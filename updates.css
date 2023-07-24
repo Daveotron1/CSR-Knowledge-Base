@@ -1,0 +1,31 @@
+.update-container {
+    
+    display:flex;
+    flex-direction: column;
+    background-color: #1e0404;
+    height: 50%;
+    width:40%;
+    border-radius: 5px;
+    margin-left:50%;
+    margin-top:100px;
+    
+}
+
+h3 {
+    white-space: nowrap;
+    margin-top: 60px;
+    margin-left: 10%;
+    color: white;
+}
+
+ol {
+    list-style: circle;
+    padding: 10px;
+    margin: 10%;
+    color: white;
+}
+
+li {
+    margin-bottom: 10px;
+}
+

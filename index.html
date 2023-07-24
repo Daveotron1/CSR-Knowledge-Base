@@ -1,69 +1,87 @@
 <!DOCTYPE html>
-<HTML lang="en">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Knowledge Base</title>
-    <style>
-        .form-container {
-            display: flex;
-            flex-direction: row;
-        }
-        .form-column {
-            flex: 1;
-        }
-        .form-column select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        #pdf-container {
-            display: none;
-            margin-top: 20px;
-        }
-        #pdf-container embed {
-            width: 100%;
-            height: 800px;
-        }
-        #start-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base 2023</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="updates.css">
 </head>
+
 <body>
-    <div class="form-container">
-        <div class="form-column">
-            <label for="tool">Innova Products:</label>
-            <select id="tool" onchange="checkSelection()">
-                <option value="">Select a Tool</option>
-                <option value="1000">1000</option>
-                <option value="5010">5010</option>
-                <option value="5110">5110</option>
-                <option value="5210">5210</option>
-                <option value="5310">5310</option>
-                <option value="5410">5410</option>
-                <option value="5510">5510</option>
-                <option value="5512">5512</option>
-                <option value="5610">5610</option>
-            </select>
+    
+    <div class="form-main">
+
+        <div class="form-container">
+            <div class="form-column">
+                <label for="tool">Innova Products:</label>
+                <select id="tool">
+                    <option value="">Select a Tool</option>
+                    <option value="1000">1000</option>
+                    <option value="5010">5010</option>
+                    <option value="5110">5110</option>
+                    <option value="5210">5210</option>
+                    <option value="5310">5310</option>
+                    <option value="5410">5410</option>
+                    <option value="5510">5510</option>
+                    <option value="5512">5512</option>
+                    <option value="5610">5610</option>
+                </select>
+            </div>
+
+            <div class="form-column">
+                <label for="reason">Reason Category:</label>
+                <select id="reason" onchange="checkSelection()">
+                    <option value="">Select a Reason</option>
+                    <option value="how-to-run-data-capture">How to run Data Capture</option>
+                    <option value="how-to-replace-batteries">How to replace batteries</option>
+                    <option value="how-to-change-tool-language">How to change tool language</option>
+                </select>
+            </div>
         </div>
 
-        <div class="form-column">
-            <label for="reason">Reason Category:</label>
-            <select id="reason" onchange="checkSelection()">
-                <option value="">Select a Reason</option>
-                <option value="how-to-run-data-capture">How to run Data Capture</option>
-                <option value="how-to-replace-batteries">How to replace batteries</option>
-                <option value="how-to-change-tool-language">How to change tool language</option>
-            </select>
+        <div class="button-container">
+            <div id="search-wrapper">
+                <label for="search"></label>
+                <button id="start-button" onclick="startSearch()" disabled>Search</button>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="update-container">
+        <h3> Update Bulletin </h3>
+        <ol>
+            <li> Example : iPhone: Apple's flagship product, a line of smartphones known for their sleek design, powerful performance, 
+                    and user-friendly interface. The iPhone has a significant global presence and is a major revenue driver for the company.
+            </li>
+            <li> Example : iPhone: Apple's flagship product, a line of smartphones known for their sleek design, powerful performance, 
+                    and user-friendly interface. The iPhone has a significant global presence and is a major revenue driver for the company.
+            </li>
+            <li> Example : iPhone: Apple's flagship product, a line of smartphones known for their sleek design, powerful performance, 
+                  and user-friendly interface. The iPhone has a significant global presence and is a major revenue driver for the company.
+            </li>
+        </ol>
+        </p>
+
+    </div>
+
+    <div class="float-container">
+        <div class="container">
+            <form action="https://formsubmit.co/david.garcia@innova.com" method="POST">
+                <input type="text" name="Name:" placeholder="Name:" required>
+                <input type="email" name="email" placeholder="Email Address:" required>
+                <input type="text" name="Tech Note:" placeholder="Tech Note Number:" required>
+                <input type="text" name="Part Number:" placeholder="Tool Part Number:" required>
+                <input type="text" name="message" placeholder="Write your message here ..." required>
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
-
-    <button id="start-button" onclick="startSearch()" disabled>Search</button>
-
-    <div id="pdf-container">
-        <embed id="pdf-embed" src="" type="application/pdf" width="100%" height="800px" />
-    </div>
+   
+</body>
 
     <script>
         function checkSelection() {
@@ -73,35 +91,40 @@
 
             if (tool && reason) {
                 startButton.disabled = false;
+                startButton.classList.add("ready"); // Add the 'ready' class to highlight the button
             } else {
                 startButton.disabled = true;
+                startButton.classList.remove("ready"); // Remove the 'ready' class to remove the highlight
             }
         }
 
         function startSearch() {
             var tool = document.getElementById("tool").value;
             var reason = document.getElementById("reason").value;
-            var pdfEmbed = document.getElementById("pdf-embed");
 
             var pdfUrl = getPDFUrl(tool, reason);
             if (pdfUrl) {
-                pdfEmbed.src = pdfUrl;
-                document.getElementById("pdf-container").style.display = "block";
+                window.open(pdfUrl, "_blank"); // Open the PDF URL in a new window or tab
+                resetSelection(); // Reset the select elements 
             }
+        }
+
+        function resetSelection() {
+            document.getElementById("reason").selectedIndex = 0; // Reset reason select element
+            checkSelection(); // Update the search button state
         }
 
         function getPDFUrl(tool, reason) {
             // Customize this function to return the appropriate PDF URL based on the selected tool and reason
             var pdfFiles = {
                 "5010": {
-                    "how-to-run-data-capture": "./How to Report an Issue.pdf"
+                    "how-to-run-data-capture": "./PDF-Files/5010/How to Report an Issue.pdf"
                 },
-                "5110": {
-                    "how-to-replace-batteries": "./How to replace batteries.pdf"
-                },
-                "5210": {
-                    "how-to-replace-batteries": "./How to replace batteries.pdf"
+                "5610": {
+                    "how-to-replace-batteries": "./PDF-Files/5610/Innova 5610 How to Replace your Battery.pdf",
+                    "how-to-run-data-capture": "./PDF-Files/5610/How to Report an Issue.pdf"
                 }
+               
                 // Add more tool and reason mappings as needed
             };
 
@@ -113,5 +136,7 @@
             }
         }
     </script>
+    
 </body>
-</HTML>
+
+</html>
